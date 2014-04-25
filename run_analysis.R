@@ -1,6 +1,6 @@
-Part1 <- function(trainfFile="./UCI HAR Dataset/train/X_train.txt", testFile="./UCI HAR Dataset/test/X_test.txt", labelsFile="./UCI HAR Dataset/features.txt"){
+Part1 <- function(trainFile="./UCI HAR Dataset/train/X_train.txt", testFile="./UCI HAR Dataset/test/X_test.txt", labelsFile="./UCI HAR Dataset/features.txt"){
 
-				trainDataSet<-read.table(trainfFile)
+				trainDataSet<-read.table(trainFile)
 				testDataSet<-read.table(testFile)
 				mergedDataSet<-rbind(trainDataSet, testDataSet)
 				labelsDataSetNames<-as.character(read.table(labelsFile)[[2]])
