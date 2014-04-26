@@ -47,6 +47,9 @@ To get the final data set there are two ways of running the script described abo
 	- Output text file: "DataSetTXT.txt"
 	- Output csv file: "DataSetCSV.csv"
 
+		- Example of use:<pre><code>source("run_analysis.R")
+			GettingAndCleaningDataPeerAssessment()</code></pre>
+
 
 
 - Run each function sequentially on this way:
@@ -60,7 +63,8 @@ To get the final data set there are two ways of running the script described abo
 
 		- To get more information about the arguments and returned values of each function please see the "CodeBook.md" on this repository
 
-		- Example of use:<pre><code>mergedDataSet &lt;- Part1()
+		- Example of use:<pre><code>source("run_analysis.R")
+			mergedDataSet &lt;- Part1()
 			mergedDataSet &lt;- Part2(mergedDataSet)
 			mergedActivity &lt;- Part3()
 			mergedDataSet &lt;- Part4(mergedDataSet, mergedActivity)
