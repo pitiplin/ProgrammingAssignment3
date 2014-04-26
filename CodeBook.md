@@ -45,11 +45,11 @@ Part1 &lt;- function(trainFile="./UCI HAR Dataset/train/X_train.txt", testFile="
 This function takes two files and merges them into a dataframe
 
 ### Arguments ###
-trainFile - character().  Path to the first file to merge
+trainFile - character().  Path to the first file to merge.  Default: "./UCI HAR Dataset/train/X_train.txt"
 
-testFile - character().  Path to the second file to merge
+testFile - character().  Path to the second file to merge.  Deafault: "./UCI HAR Dataset/test/X_test.txt"
 
-labelsDataSetNames - character().  Path to file containing the names of the columns of the files to merge
+labelsDataSetNames - character().  Path to file containing the names of the columns of the files to merge.  Default: "./UCI HAR Dataset/features.txt"
 
 
 ### Return ###
@@ -115,11 +115,11 @@ Part3 &lt;- function(trainFile="./UCI HAR Dataset/train/y_train.txt", testFile="
 This function extracts the activity of the data set and their names
 
 ### Arguments ###
-trainFile - character().  Path to the first file of activities to merge
+trainFile - character().  Path to the first file of activities to merge.  Default: "./UCI HAR Dataset/train/y_train.txt"
 
-testFile - character().  Path to the second file of activities to merge
+testFile - character().  Path to the second file of activities to merge.  Default: "./UCI HAR Dataset/test/y_test.txt"
 
-labelsFile - character().  Path to the file containing the names of the activities
+labelsFile - character().  Path to the file containing the names of the activities.  Default: "./UCI HAR Dataset/activity_labels.txt"
 
 
 ### Return ###
@@ -187,9 +187,9 @@ This function creates a second, independent tidy data set with the average of ea
 ### Arguments ###
 mergedDataSet - data.frame().  Dataframe that results of the execution of Part4() function
 
-trainFile - character().  Path to the train file of subjects to merge
+trainFile - character().  Path to the train file of subjects to merge.  Default: "./UCI HAR Dataset/train/subject_train.txt"
 
-testFile - character().  Path to the test file of subjects to merge
+testFile - character().  Path to the test file of subjects to merge.  Default: "./UCI HAR Dataset/test/subject_test.txt"
 
 ### Return ###
 mergedDataSet	- data.frame().  Dataframe with the average of each variable for each activity and each subject
@@ -235,11 +235,11 @@ This function exports a dataframe to a text and csv file
 ### Arguments ###
 mergedDataSet - data.frame()
 
-path - character().  Output directory
+path - character().  Output directory.  Default: "DATA"
 
-textFileName - character().  Output text file name
+textFileName - character().  Output text file name.  Default: "DataSetTXT"
 
-csvFileName - character().  Output csv file name
+csvFileName - character().  Output csv file name.  Default: "DataSetCSV"
 
 ### Return ###
 Nothing
@@ -264,7 +264,3 @@ Nothing
 
 ### Return ###
 Nothing
-
-
-
-Edited with MarkdownPad (http://markdownpad.com)
