@@ -10,8 +10,8 @@ run_analysis.R has seven different functions:
 - Part3
 - Part4
 - Part5
-- ExportDataSet()
-- GettingAndCleaningDataPeerAssessment()
+- ExportDataSet
+- GettingAndCleaningDataPeerAssessment
 
 First five functions implement the five different questions of the assignment:
 
@@ -64,9 +64,9 @@ Converts the test data set text file into a dataframe
 <pre><code>mergedDataSet&lt;-rbind(trainDataSet, testDataSet)</code></code></pre>
 Merges the two dataframes given above
 <pre><code>labelsDataSetNames&lt;-as.character(read.table(labelsFile)[[2]])</code></code></pre>
-Get the names of the colums of the data sets of the given file
+Gets the names of the colums of the data sets of the given file
 <pre><code>names(mergedDataSet) &lt;- labelsDataSetNames</code></code></pre>
-Set the names of the columns of the merged data set
+Sets the names of the columns of the merged data set
 <pre><code>mergedDataSet</code></code></pre>
 Dataframe to return
 
@@ -128,15 +128,15 @@ mergedActivity	- character() vector.  Vector of the names of the activities resu
 ### Explanation ###
 
 <pre><code>trainActivity&lt;-as.factor(readLines(trainFile))</code></pre>
-Get the training activities and set them as a factor() vector
+Gets the training activities and set them as a factor() vector
 <pre><code>testActivity&lt;-as.factor(readLines(testFile))</code></pre>
-Get the test activities and set them as a factor() vector
+Gets the test activities and set them as a factor() vector
 <pre><code>mergedActivity&lt;-as.factor(c(trainActivity, testActivity))</code></pre>
 Merges the two vectors given above
 <pre><code>descriptiveActivityNames&lt;-read.table(labelsFile)</code></pre>
-Get the names of the activities of the given file
+Gets the names of the activities of the given file
 <pre><code>levels(mergedActivity)&lt;-descriptiveActivityNames[[2]]</code></pre>
-Set the names of the activities of the merged vector
+Sets the names of the activities of the merged vector
 <pre><code>mergedActivity</code></pre>
 Returned vector
 
@@ -196,9 +196,9 @@ mergedDataSet	- data.frame().  Dataframe with the average of each variable for e
 ### Explanation ###
 
 <pre><code>trainSubject&lt;-as.factor(readLines(trainFile))</code></pre>
-Get the training subjects and set them as a factor() vector
+Gets the training subjects and set them as a factor() vector
 <pre><code>testSubject&lt;-as.factor(readLines(testFile))</code></pre>
-Get the test subjects and set them as a factor() vector
+Gets the test subjects and set them as a factor() vector
 <pre><code>mergedSubject&lt;-as.factor(c(trainSubject, testSubject))</code></pre>
 Merges the two vectors given above
 <pre><code>mergedDataSet["Subject"] &lt;- mergedSubject</code></pre>
@@ -208,7 +208,7 @@ This line adds the column "Subject" to the given dataframe
 	Computes a factor which represents the interaction between the "Activity" & "Subject" columns
 
 2. <pre><code>split(mergedDataSet, interaction ... )</code></pre>
-	Subsetts the data set grouping by "Activity" & "Subject"
+	Subsets the data set grouping by "Activity" & "Subject"
 
 3. <pre><code>lapply(split ..., function(x) colMeans(x[, 1:(ncol(x)-2)]))</code></pre>
 	Computes the mean of all columns (except "Activity" and "Subject") that results of grouping the data set
