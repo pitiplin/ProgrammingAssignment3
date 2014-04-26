@@ -30,13 +30,13 @@ GettingAndCleaningDataPeerAssessment runs all scripts sequentially with default 
 ## Part1 ##
 
 <pre><code>
-Part1 <- function(trainFile="./UCI HAR Dataset/train/X_train.txt", testFile="./UCI HAR Dataset/test/X_test.txt", labelsFile="./UCI HAR Dataset/features.txt"){
+Part1 &lt;- function(trainFile="./UCI HAR Dataset/train/X_train.txt", testFile="./UCI HAR Dataset/test/X_test.txt", labelsFile="./UCI HAR Dataset/features.txt"){
 
-				trainDataSet<-read.table(trainFile)
-				testDataSet<-read.table(testFile)
-				mergedDataSet<-rbind(trainDataSet, testDataSet)
-				labelsDataSetNames<-as.character(read.table(labelsFile)[[2]])
-				names(mergedDataSet) <- labelsDataSetNames
+				trainDataSet&lt;-read.table(trainFile)
+				testDataSet&lt;-read.table(testFile)
+				mergedDataSet&lt;-rbind(trainDataSet, testDataSet)
+				labelsDataSetNames&lt;-as.character(read.table(labelsFile)[[2]])
+				names(mergedDataSet) &lt;- labelsDataSetNames
 				
 				mergedDataSet
 }
@@ -57,24 +57,24 @@ mergedDataSet	- data.frame().  Dataframe resulting of the two files given
 
 ### Explanation ###
 
-<pre><code>trainDataSet<-read.table(trainFile)</code></code></pre>
+<pre><code>trainDataSet&lt;-read.table(trainFile)</code></code></pre>
 Converts the training data set text file into a dataframe
-<pre><code>testDataSet<-read.table(testFile)</code></code></pre>
+<pre><code>testDataSet&lt;-read.table(testFile)</code></code></pre>
 Converts the test data set text file into a dataframe
-<pre><code>mergedDataSet<-rbind(trainDataSet, testDataSet)</code></code></pre>
+<pre><code>mergedDataSet&lt;-rbind(trainDataSet, testDataSet)</code></code></pre>
 Merges the two dataframes given above
-<pre><code>labelsDataSetNames<-as.character(read.table(labelsFile)[[2]])</code></code></pre>
+<pre><code>labelsDataSetNames&lt;-as.character(read.table(labelsFile)[[2]])</code></code></pre>
 Get the names of the colums of the data sets of the given file
-<pre><code>names(mergedDataSet) <- labelsDataSetNames</code></code></pre>
+<pre><code>names(mergedDataSet) &lt;- labelsDataSetNames</code></code></pre>
 Set the names of the columns of the merged data set
 <pre><code>mergedDataSet</code></code></pre>
 Dataframe to return
 
 ## Part2 ##
 <pre><code>
-Part2 <- function(mergedDataSet){
+Part2 &lt;- function(mergedDataSet){
 
-				mergedDataSet<-mergedDataSet[c(grep("-mean()",names(mergedDataSet),fixed=T), grep("-std()",names(mergedDataSet),fixed=T))]
+				mergedDataSet&lt;-mergedDataSet[c(grep("-mean()",names(mergedDataSet),fixed=T), grep("-std()",names(mergedDataSet),fixed=T))]
 				
 				mergedDataSet
 }
@@ -91,7 +91,7 @@ mergedDataSet	- data.frame().  Dataframe resulting of the subset of the columns
 
 ### Explanation ###
 
-<pre><code>mergedDataSet<-mergedDataSet[c(grep("-mean()",names(mergedDataSet),fixed=T), grep("-std()",names(mergedDataSet),fixed=T))]</code></pre>
+<pre><code>mergedDataSet&lt;-mergedDataSet[c(grep("-mean()",names(mergedDataSet),fixed=T), grep("-std()",names(mergedDataSet),fixed=T))]</code></pre>
 This line extracts only the columns that contain "-mean()" or "-std()" on its name.  fixed is set to TRUE to avoid names like "-meanFreq()"
 <pre><code>mergedDataSet</code></pre>
 
@@ -99,14 +99,14 @@ Dataframe to return
 
 ## Part3 ##
 <pre><code>
-Part3 <- function(trainFile="./UCI HAR Dataset/train/y_train.txt", testFile="./UCI HAR Dataset/test/y_test.txt", labelsFile="./UCI HAR Dataset/activity_labels.txt"){
+Part3 &lt;- function(trainFile="./UCI HAR Dataset/train/y_train.txt", testFile="./UCI HAR Dataset/test/y_test.txt", labelsFile="./UCI HAR Dataset/activity_labels.txt"){
 
-				trainActivity<-as.factor(readLines(trainFile))
-				testActivity<-as.factor(readLines(testFile))
-				mergedActivity<-as.factor(c(trainActivity, testActivity))
+				trainActivity&lt;-as.factor(readLines(trainFile))
+				testActivity&lt;-as.factor(readLines(testFile))
+				mergedActivity&lt;-as.factor(c(trainActivity, testActivity))
 				
-				descriptiveActivityNames<-read.table(labelsFile)
-				levels(mergedActivity)<-descriptiveActivityNames[[2]]
+				descriptiveActivityNames&lt;-read.table(labelsFile)
+				levels(mergedActivity)&lt;-descriptiveActivityNames[[2]]
 				
 				mergedActivity
 }
@@ -127,15 +127,15 @@ mergedActivity	- character() vector.  Vector of the names of the activities resu
 
 ### Explanation ###
 
-<pre><code>trainActivity<-as.factor(readLines(trainFile))</code></pre>
+<pre><code>trainActivity&lt;-as.factor(readLines(trainFile))</code></pre>
 Get the training activities and set them as a factor() vector
-<pre><code>testActivity<-as.factor(readLines(testFile))</code></pre>
+<pre><code>testActivity&lt;-as.factor(readLines(testFile))</code></pre>
 Get the test activities and set them as a factor() vector
-<pre><code>mergedActivity<-as.factor(c(trainActivity, testActivity))</code></pre>
+<pre><code>mergedActivity&lt;-as.factor(c(trainActivity, testActivity))</code></pre>
 Merges the two vectors given above
-<pre><code>descriptiveActivityNames<-read.table(labelsFile)</code></pre>
+<pre><code>descriptiveActivityNames&lt;-read.table(labelsFile)</code></pre>
 Get the names of the activities of the given file
-<pre><code>levels(mergedActivity)<-descriptiveActivityNames[[2]]</code></pre>
+<pre><code>levels(mergedActivity)&lt;-descriptiveActivityNames[[2]]</code></pre>
 Set the names of the activities of the merged vector
 <pre><code>mergedActivity</code></pre>
 Returned vector
@@ -143,9 +143,9 @@ Returned vector
 
 ## Part4 ##
 <pre><code>
-Part4 <- function(mergedDataSet, mergedActivity){
+Part4 &lt;- function(mergedDataSet, mergedActivity){
 
-				mergedDataSet["Activity"] <- mergedActivity
+				mergedDataSet["Activity"] &lt;- mergedActivity
 				
 				mergedDataSet
 }
@@ -162,7 +162,7 @@ mergedActivity - data.frame().  Dataframe that results of the execution of Part3
 mergedDataSet	- data.frame().  Dataframe that results of the addition of the column "Activity"
 
 ### Explanation ###
-<pre><code>mergedDataSet["Activity"] <- mergedActivity</code></pre>
+<pre><code>mergedDataSet["Activity"] &lt;- mergedActivity</code></pre>
 This line adds the column "Activity" to the given dataframe
 <pre><code>mergedDataSet</code></pre>
 
@@ -170,14 +170,14 @@ Dataframe to return
 
 ## Part5 ##
 <pre><code>
-Part5 <- function(mergedDataSet, trainFile="./UCI HAR Dataset/train/subject_train.txt", testFile="./UCI HAR Dataset/test/subject_test.txt"){
+Part5 &lt;- function(mergedDataSet, trainFile="./UCI HAR Dataset/train/subject_train.txt", testFile="./UCI HAR Dataset/test/subject_test.txt"){
 				
-				trainSubject<-as.factor(readLines(trainFile))
-				testSubject<-as.factor(readLines(testFile))
-				mergedSubject<-as.factor(c(trainSubject, testSubject))
-				mergedDataSet["Subject"] <- mergedSubject
+				trainSubject&lt;-as.factor(readLines(trainFile))
+				testSubject&lt;-as.factor(readLines(testFile))
+				mergedSubject&lt;-as.factor(c(trainSubject, testSubject))
+				mergedDataSet["Subject"] &lt;- mergedSubject
 				
-				newDataSet<-t(as.data.frame(lapply(split(mergedDataSet, interaction(mergedDataSet$Activity,mergedDataSet$Subject)), function(x) colMeans(x[, 1:(ncol(x)-2)]))))
+				newDataSet&lt;-t(as.data.frame(lapply(split(mergedDataSet, interaction(mergedDataSet$Activity,mergedDataSet$Subject)), function(x) colMeans(x[, 1:(ncol(x)-2)]))))
 }
 }
 </code></pre>
@@ -196,15 +196,15 @@ mergedDataSet	- data.frame().  Dataframe with the average of each variable for e
 
 ### Explanation ###
 
-<pre><code>trainSubject<-as.factor(readLines(trainFile))</code></pre>
+<pre><code>trainSubject&lt;-as.factor(readLines(trainFile))</code></pre>
 Get the training subjects and set them as a factor() vector
-<pre><code>testSubject<-as.factor(readLines(testFile))</code></pre>
+<pre><code>testSubject&lt;-as.factor(readLines(testFile))</code></pre>
 Get the test subjects and set them as a factor() vector
-<pre><code>mergedSubject<-as.factor(c(trainSubject, testSubject))</code></pre>
+<pre><code>mergedSubject&lt;-as.factor(c(trainSubject, testSubject))</code></pre>
 Merges the two vectors given above
-<pre><code>mergedDataSet["Subject"] <- mergedSubject</code></pre>
+<pre><code>mergedDataSet["Subject"] &lt;- mergedSubject</code></pre>
 This line adds the column "Subject" to the given dataframe
-<pre><code>newDataSet<-t(as.data.frame(lapply(split(mergedDataSet, interaction(mergedDataSet$Activity,mergedDataSet$Subject)), function(x) colMeans(x[, 1:(ncol(x)-2)]))))</code></pre>
+<pre><code>newDataSet&lt;-t(as.data.frame(lapply(split(mergedDataSet, interaction(mergedDataSet$Activity,mergedDataSet$Subject)), function(x) colMeans(x[, 1:(ncol(x)-2)]))))</code></pre>
 1. <pre><code>interaction(mergedDataSet$Activity,mergedDataSet$Subject)</code></pre>
 	Computes a factor which represents the interaction of the "Activity" & "Subject" columns
 
@@ -219,7 +219,7 @@ This line adds the column "Subject" to the given dataframe
 
 ## ExportDataSet ##
 <pre><code>
-ExportDataSet <- function(newDataSet, path="DATA", textFileName="DataSetTXT", csvFileName="DataSetCSV"){
+ExportDataSet &lt;- function(newDataSet, path="DATA", textFileName="DataSetTXT", csvFileName="DataSetCSV"){
 
 				if (!file.exists(path)){
 								dir.create(path)
@@ -246,13 +246,13 @@ Nothing
 
 ## GettingAndCleaningDataPeerAssessment ##
 <pre><code>
-GettingAndCleaningDataPeerAssessment <- function(){	
+GettingAndCleaningDataPeerAssessment &lt;- function(){	
 
-				mergedDataSet <- Part1()
-				mergedDataSet <- Part2(mergedDataSet)
-				mergedActivity <- Part3()
-				mergedDataSet <- Part4(mergedDataSet, mergedActivity)
-				newDataSet <- Part5(mergedDataSet)
+				mergedDataSet &lt;- Part1()
+				mergedDataSet &lt;- Part2(mergedDataSet)
+				mergedActivity &lt;- Part3()
+				mergedDataSet &lt;- Part4(mergedDataSet, mergedActivity)
+				newDataSet &lt;- Part5(mergedDataSet)
 				ExportDataSet(newDataSet)
 }
 </code></pre>
