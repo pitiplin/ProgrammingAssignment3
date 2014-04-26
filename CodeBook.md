@@ -179,7 +179,6 @@ Part5 &lt;- function(mergedDataSet, trainFile="./UCI HAR Dataset/train/subject_t
 				
 				newDataSet&lt;-t(as.data.frame(lapply(split(mergedDataSet, interaction(mergedDataSet$Activity,mergedDataSet$Subject)), function(x) colMeans(x[, 1:(ncol(x)-2)]))))
 }
-}
 </code></pre>
 
 This function creates a second, independent tidy data set with the average of each variable for each activity and each subject
